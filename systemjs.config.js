@@ -2,12 +2,15 @@
  * System configuration for Angular 2 samples
  * Adjust as necessary for your application needs.
  */
+
+// https://github.com/systemjs/systemjs
+// Universal dynamic module loader - 
+// loads ES6 modules, AMD, CommonJS and global scripts in the browser and NodeJS.
 (function(global) {
 
   // map tells the System loader where to look for things
   var map = {
     'app':                        'app', // 'dist',
-
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs'

@@ -1,0 +1,85 @@
+{
+  // https://angular.cn/docs/ts/latest/guide/npm-packages.html
+  "name": "angular2-quickstart",
+  "version": "1.0.0",
+  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "scripts": {
+    // npm start
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "docker-build": "docker build -t ng2-quickstart .",
+    "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart",
+    "pree2e": "npm run webdriver:update",
+	// END TO END 測試 http://ithelp.ithome.com.tw/articles/10096479
+    "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
+    "lint": "tslint ./app/**/*.ts -t verbose",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "test-once": "tsc && karma start karma.conf.js --single-run",
+    //  运行一次 TypeScript 编译器
+    "tsc": "tsc",
+    //  在“监视模式”下运行 TypeScript 编译器，进程持续运行，等待 TypeScript 文件的变化，一旦变化，就重新编译它们。
+    "tsc:w": "tsc -w",
+    "typings": "typings",
+    "webdriver:update": "webdriver-manager update"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  // 列在 dependencies 下的这些包是 运行 本应用的基础，
+  "dependencies": {
+    "@angular/common":  "2.0.0-rc.4",
+    // Angular 的 模板编译器 。 它会理解模板，并且把模板转化成代码，以供应用程序运行和渲染
+    "@angular/compiler":  "2.0.0-rc.4",
+    // 框架中关键的运行期部件，每一个应用都需要它。 
+    // 包括所有的元数据装饰器： Component 、 Directive ，依赖注入系统，以及组件生命周期钩子
+    "@angular/core":  "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    // Angular 的 HTTP 客户端
+    "@angular/http":  "2.0.0-rc.4",
+    // 与 DOM 和浏览器相关的每样东西，特别是帮助往 DOM 中渲染的那部分。 
+    // 这个包还包含 bootstrapStatic 方法，用来引导那些在产品构建时需要离线预编译模板的应用程序。
+    "@angular/platform-browser":  "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic":  "2.0.0-rc.4",
+    "@angular/router":  "3.0.0-beta.2",
+    "@angular/router-deprecated":  "2.0.0-rc.2",
+    "@angular/upgrade":  "2.0.0-rc.4",
+
+    //是一个动态的模块加载器， 与 ES2015 模块 规范兼容。 还有很多其他选择，比如广受欢迎的 webpack 。
+    "systemjs": "0.19.27",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.3",
+    //  一个为 可观察对象 (Observable) 规范 提供的填充库，
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12",
+
+    "angular2-in-memory-web-api": "0.0.14",
+    "bootstrap": "^3.3.6"
+  },
+  // 而 devDependencies 下的只在 开发 此应用时才用得到。 
+  // devDependencies 下的这些包在产品环境下安装时会被排除
+  "devDependencies": {
+    //  一个用来在 OS/X 、 Windows 和 Linux 操作系统上同时运行多个 npm 命令的工具
+    "concurrently": "^2.2.0",
+    // 一个轻量级、静态的服务器
+    "lite-server": "^2.2.0",
+    // TypeScript 语言的服务器，包含了 TypeScript 编译器 tsc 
+    "typescript": "^1.8.10",
+    // 一个“ TypeScript 定义”文件管理器
+    "typings": "^1.0.4",
+
+    "canonical-path": "0.0.2",
+    "http-server": "^0.9.0",
+    "tslint": "^3.7.4",
+    "lodash": "^4.11.1",
+    "jasmine-core": "~2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-cli": "^0.1.2",
+    "karma-htmlfile-reporter": "^0.2.2",
+    "karma-jasmine": "^0.3.8",
+    "protractor": "^3.3.0",
+    "rimraf": "^2.5.2"
+  },
+  "repository": {}
+}
